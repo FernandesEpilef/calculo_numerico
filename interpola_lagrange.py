@@ -1,4 +1,4 @@
-def interpolacao_lagrange_detalhada(pontos_x, pontos_y, valor_x):
+def interpolacao_lagrange(pontos_x, pontos_y, valor_x):
 
     n = len(pontos_x)
     resultado_final = 0.0
@@ -21,19 +21,18 @@ def interpolacao_lagrange_detalhada(pontos_x, pontos_y, valor_x):
         
     return resultado_final, valores_L
 
-# --- EXEMPLO PRÁTICO ---
+# exemplo
 
 x_conhecidos = [8.0, 8.5, 9.0, 10.0]
 y_conhecidos = [2.0, 2.0408, 2.0801, 2.1544]
 
 x_descoberto = 9.75
 
-y_descoberto, lista_L = interpolacao_lagrange_detalhada(
+y_descoberto, lista_L = interpolacao_lagrange(
     x_conhecidos, y_conhecidos, x_descoberto
 )
 
-# 4. Mostre os resultados!
-print("--- Interpolação de Lagrange (Detalhada) ---")
+print("--- Interpolação de Lagrange ---")
 print(f"Pontos X conhecidos: {x_conhecidos}")
 print(f"Pontos Y conhecidos: {y_conhecidos}")
 print(f"Calculando para x = {x_descoberto}")

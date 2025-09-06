@@ -1,13 +1,11 @@
 import numpy as np
 
 def simpson(f, a, b, n):
-    # A verificação de que n é par continua essencial
     if n % 2 != 0:
         print("Erro: O número de subintervalos (n) deve ser par.")
         return None
 
     h = (b - a) / n
-    
     soma = f(a) + f(b)
 
     for i in range(1, n, 2):
@@ -34,4 +32,4 @@ print(f"Intervalo: [{limite_inferior}, {limite_superior}], n = {num_intervalos}"
 print("-" * 35)
 
 if resultado is not None:
-    print(f"Valor aproximado da integral: {resultado:.6f}") # O resultado continua o mesmo!
+    print(f"Valor aproximado da integral: {resultado:.6f}")

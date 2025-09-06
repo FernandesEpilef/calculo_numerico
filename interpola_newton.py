@@ -1,4 +1,4 @@
-def imprimir_tabela_iniciante(tabela, pontos_x):
+def imprimir_tabela(tabela, pontos_x):
 
     print("\n--- Tabela de Diferenças Divididas ---")
     
@@ -9,12 +9,11 @@ def imprimir_tabela_iniciante(tabela, pontos_x):
     print("y[i]", end='\t')
     for i in range(1, n):
         print(f"Ordem {i}", end='\t')
-    print() 
-    #print("-------------------------------------------------")
+    print()
 
     for i in range(n):
         print(i, end='\t')
-        print(f"{pontos_x[i]:.2f}", end='\t') # Formata x para 2 casas decimais
+        print(f"{pontos_x[i]:.2f}", end='\t')
 
         for j in range(n):
             if j <= i:
@@ -22,7 +21,7 @@ def imprimir_tabela_iniciante(tabela, pontos_x):
         print()
 
 
-def interpolacao_newton_com_tabela(pontos_x, pontos_y, valor_x):
+def interpolacao_newton(pontos_x, pontos_y, valor_x):
     n = len(pontos_x)
     tabela = [[0.0 for _ in range(n)] for _ in range(n)]
 
@@ -46,26 +45,19 @@ def interpolacao_newton_com_tabela(pontos_x, pontos_y, valor_x):
         
     return resultado, tabela
 
-# --- EXEMPLO PRÁTICO ---
-
+# exemplo
 x_conhecidos = [0, 1, 2, 10, 11, 13]
 y_conhecidos = [0.5, 3.3, 5.3, 9.9, 10.2, 9]
 
-# 2. Defina o ponto que você quer descobrir
 x_descoberto = 5
 
-# 3. Chame a função para calcular o resultado E a tabela
-y_descoberto, tabela_calculada = interpolacao_newton_com_tabela(
+y_descoberto, tabela_calculada = interpolacao_newton(
     x_conhecidos, y_conhecidos, x_descoberto
 )
 
-# 4. Mostre os resultados!
 print("--- Interpolação de Newton (com Tabela Simples) ---")
 print(f"Pontos X conhecidos: {x_conhecidos}")
 print(f"Pontos Y conhecidos: {y_conhecidos}")
-
-# Chama a nova função de impressão, mais simples de entender
-imprimir_tabela_iniciante(tabela_calculada, x_conhecidos)
-
+imprimir_tabela(tabela_calculada, x_conhecidos)
 print("\n--- Resultado Final ---")
 print(f"Para x = {x_descoberto}, o valor estimado de y é: {y_descoberto:.4f}")
